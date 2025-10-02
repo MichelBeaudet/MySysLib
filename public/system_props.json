@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2025-10-02T23:20:05.278Z",
+  "capturedAt": "2025-10-02T23:28:27.134Z",
   "environment": {
     "ALLUSERSPROFILE": "C:\\ProgramData",
     "APPDATA": "C:\\Users\\miche\\AppData\\Roaming",
@@ -71,7 +71,7 @@
     "VisualStudioVersion": "17.0",
     "VSAPPIDDIR": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Preview\\Common7\\IDE\\",
     "VSAPPIDNAME": "devenv.exe",
-    "VSCODE_INSPECTOR_OPTIONS": "{\"inspectorIpc\":\"\\\\\\\\.\\\\pipe\\\\node-cdp.30128-fc3e8c22-0.sock\",\"deferredMode\":false,\"waitForDebugger\":\"\",\"execPath\":\"C:\\\\Program Files\\\\nodejs\\\\node.exe\",\"onlyEntrypoint\":false,\"autoAttachMode\":\"always\",\"openerId\":\"4383574d304117e360f535f7\"}",
+    "VSCODE_INSPECTOR_OPTIONS": "{\"inspectorIpc\":\"\\\\\\\\.\\\\pipe\\\\node-cdp.2688-08e391d6-0.sock\",\"deferredMode\":false,\"waitForDebugger\":\"\",\"execPath\":\"C:\\\\Program Files\\\\nodejs\\\\node.exe\",\"onlyEntrypoint\":false,\"autoAttachMode\":\"always\",\"openerId\":\"d2e262a86d679da7ff5c5eef\"}",
     "VSLANG": "1033",
     "VsPerMonitorDpiAwarenessEnabled.14556": "TRUE",
     "VSSKUEDITION": "Enterprise",
@@ -80,7 +80,7 @@
     "__PSLockDownPolicy": "0"
   },
   "process": {
-    "pid": 14912,
+    "pid": 22876,
     "nodeVersion": "v24.8.0",
     "argv": [
       "C:\\Program Files\\nodejs\\node.exe",
@@ -89,13 +89,13 @@
     "execPath": "C:\\Program Files\\nodejs\\node.exe",
     "cwd": "C:\\Users\\miche\\OneDrive\\My Projects\\VS Studio Full Stack\\MySysLib",
     "memoryUsage": {
-      "rss": 54489088,
-      "heapTotal": 17625088,
-      "heapUsed": 10991000,
+      "rss": 54136832,
+      "heapTotal": 17887232,
+      "heapUsed": 10980936,
       "external": 2502760,
       "arrayBuffers": 18703
     },
-    "uptimeSec": 0.8541564
+    "uptimeSec": 0.8369555
   },
   "os": {
     "platform": "win32",
@@ -107,181 +107,181 @@
         "model": "13th Gen Intel(R) Core(TM) i5-13400F",
         "speed": 2496,
         "times": {
-          "user": 13913765,
+          "user": 13921343,
           "nice": 0,
-          "sys": 7414875,
-          "idle": 97185171,
-          "irq": 1404078
+          "sys": 7427140,
+          "idle": 97667171,
+          "irq": 1405843
         }
       },
       {
         "model": "13th Gen Intel(R) Core(TM) i5-13400F",
         "speed": 2496,
         "times": {
-          "user": 3218234,
+          "user": 3220218,
           "nice": 0,
-          "sys": 1477328,
-          "idle": 113818093,
-          "irq": 247765
+          "sys": 1479421,
+          "idle": 114315828,
+          "irq": 248046
         }
       },
       {
         "model": "13th Gen Intel(R) Core(TM) i5-13400F",
         "speed": 2496,
         "times": {
-          "user": 26179109,
+          "user": 26191953,
           "nice": 0,
-          "sys": 5743109,
-          "idle": 86591484,
-          "irq": 489656
+          "sys": 5756734,
+          "idle": 87066859,
+          "irq": 490609
         }
       },
       {
         "model": "13th Gen Intel(R) Core(TM) i5-13400F",
         "speed": 2496,
         "times": {
-          "user": 4576812,
+          "user": 4579921,
           "nice": 0,
-          "sys": 1451703,
-          "idle": 112485187,
-          "irq": 207671
+          "sys": 1455625,
+          "idle": 112979906,
+          "irq": 208484
         }
       },
       {
         "model": "13th Gen Intel(R) Core(TM) i5-13400F",
         "speed": 2496,
         "times": {
-          "user": 15185015,
+          "user": 15193312,
           "nice": 0,
-          "sys": 4861515,
-          "idle": 98467171,
-          "irq": 368765
+          "sys": 4871437,
+          "idle": 98950796,
+          "irq": 369812
         }
       },
       {
         "model": "13th Gen Intel(R) Core(TM) i5-13400F",
         "speed": 2496,
         "times": {
-          "user": 3295437,
+          "user": 3297109,
           "nice": 0,
-          "sys": 1326140,
-          "idle": 113892125,
-          "irq": 176937
+          "sys": 1329609,
+          "idle": 114388734,
+          "irq": 177562
         }
       },
       {
         "model": "13th Gen Intel(R) Core(TM) i5-13400F",
         "speed": 2496,
         "times": {
-          "user": 16252203,
+          "user": 16259640,
           "nice": 0,
-          "sys": 4734078,
-          "idle": 97527421,
-          "irq": 298593
+          "sys": 4744343,
+          "idle": 98011468,
+          "irq": 299828
         }
       },
       {
         "model": "13th Gen Intel(R) Core(TM) i5-13400F",
         "speed": 2496,
         "times": {
-          "user": 3640703,
+          "user": 3642687,
           "nice": 0,
-          "sys": 1221062,
-          "idle": 113651937,
-          "irq": 134750
+          "sys": 1225046,
+          "idle": 114147812,
+          "irq": 135234
         }
       },
       {
         "model": "13th Gen Intel(R) Core(TM) i5-13400F",
         "speed": 2496,
         "times": {
-          "user": 18017703,
+          "user": 18026187,
           "nice": 0,
-          "sys": 4653906,
-          "idle": 95842093,
-          "irq": 252921
+          "sys": 4663015,
+          "idle": 96326343,
+          "irq": 253593
         }
       },
       {
         "model": "13th Gen Intel(R) Core(TM) i5-13400F",
         "speed": 2496,
         "times": {
-          "user": 3514781,
+          "user": 3516406,
           "nice": 0,
-          "sys": 1096359,
-          "idle": 113902562,
-          "irq": 99937
+          "sys": 1097937,
+          "idle": 114401125,
+          "irq": 100156
         }
       },
       {
         "model": "13th Gen Intel(R) Core(TM) i5-13400F",
         "speed": 2496,
         "times": {
-          "user": 18852906,
+          "user": 18863062,
           "nice": 0,
-          "sys": 4889046,
-          "idle": 94771750,
-          "irq": 229968
+          "sys": 4897578,
+          "idle": 95254906,
+          "irq": 230546
         }
       },
       {
         "model": "13th Gen Intel(R) Core(TM) i5-13400F",
         "speed": 2496,
         "times": {
-          "user": 3609531,
+          "user": 3611625,
           "nice": 0,
-          "sys": 1040000,
-          "idle": 113864125,
-          "irq": 62125
+          "sys": 1042125,
+          "idle": 114361703,
+          "irq": 62234
         }
       },
       {
         "model": "13th Gen Intel(R) Core(TM) i5-13400F",
         "speed": 2496,
         "times": {
-          "user": 13805156,
+          "user": 13878515,
           "nice": 0,
-          "sys": 5837515,
-          "idle": 98871031,
-          "irq": 338343
+          "sys": 5866781,
+          "idle": 99270250,
+          "irq": 339093
         }
       },
       {
         "model": "13th Gen Intel(R) Core(TM) i5-13400F",
         "speed": 2496,
         "times": {
-          "user": 17627328,
+          "user": 17722015,
           "nice": 0,
-          "sys": 6117484,
-          "idle": 94768890,
-          "irq": 288437
+          "sys": 6146265,
+          "idle": 95147265,
+          "irq": 289343
         }
       },
       {
         "model": "13th Gen Intel(R) Core(TM) i5-13400F",
         "speed": 2496,
         "times": {
-          "user": 19268640,
+          "user": 19385031,
           "nice": 0,
-          "sys": 6019171,
-          "idle": 93225890,
-          "irq": 278781
+          "sys": 6051171,
+          "idle": 93579343,
+          "irq": 279734
         }
       },
       {
         "model": "13th Gen Intel(R) Core(TM) i5-13400F",
         "speed": 2496,
         "times": {
-          "user": 21082718,
+          "user": 21204343,
           "nice": 0,
-          "sys": 5930312,
-          "idle": 91500671,
-          "irq": 266281
+          "sys": 5963781,
+          "idle": 91847421,
+          "irq": 267187
         }
       }
     ],
     "totalMemoryMB": 16226,
-    "freeMemoryMB": 2943,
+    "freeMemoryMB": 3006,
     "hostname": "MSI2023",
     "homedir": "C:\\Users\\miche",
     "tmpdir": "C:\\Users\\miche\\AppData\\Local\\Temp",
