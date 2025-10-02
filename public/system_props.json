@@ -1,0 +1,413 @@
+{
+  "capturedAt": "2025-10-02T23:20:05.278Z",
+  "environment": {
+    "ALLUSERSPROFILE": "C:\\ProgramData",
+    "APPDATA": "C:\\Users\\miche\\AppData\\Roaming",
+    "asl.log": "Destination=file",
+    "ChocolateyInstall": "C:\\ProgramData\\chocolatey",
+    "ChocolateyLastPathUpdate": "134002085312952767",
+    "CommonProgramFiles": "C:\\Program Files\\Common Files",
+    "CommonProgramFiles(x86)": "C:\\Program Files (x86)\\Common Files",
+    "CommonProgramW6432": "C:\\Program Files\\Common Files",
+    "COMPUTERNAME": "MSI2023",
+    "ComSpec": "C:\\WINDOWS\\system32\\cmd.exe",
+    "configsetroot": "C:\\WINDOWS\\ConfigSetRoot",
+    "CUDA_PATH": "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.1\\bin",
+    "CUDA_PATH_V12_1": "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.1\\bin",
+    "CUDNN_PATH": "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.1\\lib\\x64",
+    "DriverData": "C:\\Windows\\System32\\Drivers\\DriverData",
+    "EFC_17124_1262719628": "1",
+    "EFC_17124_1592913036": "1",
+    "EFC_17124_2283032206": "1",
+    "EFC_17124_2775293581": "1",
+    "EFC_17124_3789132940": "1",
+    "FPS_BROWSER_APP_PROFILE_STRING": "Internet Explorer",
+    "FPS_BROWSER_USER_PROFILE_STRING": "Default",
+    "GCExpConfigUsedInSession": "3",
+    "HOMEDRIVE": "C:",
+    "HOMEPATH": "\\Users\\miche",
+    "IIS_BIN": "C:\\Program Files\\IIS Express",
+    "IIS_DRIVE": "C:",
+    "IIS_SITES_HOME": "C:\\Users\\miche\\OneDrive\\Documents\\My Web Sites",
+    "IIS_USER_HOME": "C:\\Users\\miche\\OneDrive\\Documents\\IISExpress",
+    "LOCALAPPDATA": "C:\\Users\\miche\\AppData\\Local",
+    "LOGONSERVER": "\\\\MSI2023",
+    "MSBuildLoadMicrosoftTargetsReadOnly": "true",
+    "NODE_OPTIONS": " --require \"c:/program files/microsoft visual studio/2022/preview/common7/ide/commonextensions/microsoft/jsdiagnostics/debugger/debugAdapter/src/bootloader.js\"  --inspect-publish-uid=http",
+    "NUMBER_OF_PROCESSORS": "16",
+    "OneDrive": "C:\\Users\\miche\\OneDrive - Canadian Ski Patrol",
+    "OneDriveCommercial": "C:\\Users\\miche\\OneDrive - Canadian Ski Patrol",
+    "OneDriveConsumer": "C:\\Users\\miche\\OneDrive",
+    "OS": "Windows_NT",
+    "Path": "C:\\Users\\miche\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\;C:\\Users\\miche\\AppData\\Local\\Programs\\Python\\Python313\\;C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.1\\bin;C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.1\\libnvvp;C:\\Program Files\\Microsoft\\jdk-11.0.16.101-hotspot\\bin;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\;C:\\Program Files\\dotnet\\;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Users\\miche\\Downloads\\bazel-7.4.1-dist;C:\\Program Files\\NVIDIA Corporation\\Nsight Compute 2023.1.0\\;C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.1\\lib\\x64;C:\\Program Files\\Git\\cmd;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\;C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\;C:\\Program Files\\nodejs\\;C:\\Users\\miche\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\;C:\\Users\\miche\\AppData\\Local\\Programs\\Python\\Python313\\;C:\\Users\\miche\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\;C:\\Users\\miche\\AppData\\Local\\Programs\\Python\\Python312\\;C:\\Users\\miche\\AppData\\Local\\Programs\\Python\\Python311\\;C:\\Users\\miche\\AppData\\Local\\Microsoft\\WindowsApps;%PyCharm%;C:\\Users\\miche\\AppData\\Local\\GitHubDesktop\\bin;C:\\Program Files\\Inkscape\\bin;C:\\Users\\miche\\Downloads\\bazel-7.4.1-dist;C:\\Users\\miche\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\miche\\.dotnet\\tools;C:\\Users\\miche\\AppData\\Roaming\\npm",
+    "PATHEXT": ".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.PYW",
+    "PkgDefApplicationConfigFile": "C:\\Users\\miche\\AppData\\Local\\Microsoft\\VisualStudio\\17.0_8a91ef31\\devenv.exe.config",
+    "PROCESSOR_ARCHITECTURE": "AMD64",
+    "PROCESSOR_IDENTIFIER": "Intel64 Family 6 Model 191 Stepping 2, GenuineIntel",
+    "PROCESSOR_LEVEL": "6",
+    "PROCESSOR_REVISION": "bf02",
+    "ProgramData": "C:\\ProgramData",
+    "ProgramFiles": "C:\\Program Files",
+    "ProgramFiles(x86)": "C:\\Program Files (x86)",
+    "ProgramW6432": "C:\\Program Files",
+    "PSModulePath": "C:\\Program Files\\WindowsPowerShell\\Modules;C:\\WINDOWS\\system32\\WindowsPowerShell\\v1.0\\Modules",
+    "PUBLIC": "C:\\Users\\Public",
+    "ServiceHubHostServiceBrokerPipeName": "\\\\.\\pipe\\F8FEDE3C-921A-4268-81B2-6D5B9BE7BC62",
+    "ServiceHubLogSessionKey": "C79EBFB4",
+    "SESSIONNAME": "Console",
+    "SignInWithHomeTenantOnly": "False",
+    "SystemDrive": "C:",
+    "SystemRoot": "C:\\WINDOWS",
+    "TEMP": "C:\\Users\\miche\\AppData\\Local\\Temp",
+    "ThreadedWaitDialogDpiContext": "-4",
+    "TMP": "C:\\Users\\miche\\AppData\\Local\\Temp",
+    "USERDOMAIN": "MSI2023",
+    "USERDOMAIN_ROAMINGPROFILE": "MSI2023",
+    "USERNAME": "miche",
+    "USERPROFILE": "C:\\Users\\miche",
+    "VBOX_MSI_INSTALL_PATH": "C:\\Program Files\\Oracle\\VirtualBox\\",
+    "VisualStudioDir": "C:\\Users\\miche\\OneDrive\\Documents\\Visual Studio 2022 Preview",
+    "VisualStudioEdition": "Microsoft Visual Studio Enterprise 2022",
+    "VisualStudioVersion": "17.0",
+    "VSAPPIDDIR": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Preview\\Common7\\IDE\\",
+    "VSAPPIDNAME": "devenv.exe",
+    "VSCODE_INSPECTOR_OPTIONS": "{\"inspectorIpc\":\"\\\\\\\\.\\\\pipe\\\\node-cdp.30128-fc3e8c22-0.sock\",\"deferredMode\":false,\"waitForDebugger\":\"\",\"execPath\":\"C:\\\\Program Files\\\\nodejs\\\\node.exe\",\"onlyEntrypoint\":false,\"autoAttachMode\":\"always\",\"openerId\":\"4383574d304117e360f535f7\"}",
+    "VSLANG": "1033",
+    "VsPerMonitorDpiAwarenessEnabled.14556": "TRUE",
+    "VSSKUEDITION": "Enterprise",
+    "VS_Perf_Session_GCHeapCount": "2",
+    "windir": "C:\\WINDOWS",
+    "__PSLockDownPolicy": "0"
+  },
+  "process": {
+    "pid": 14912,
+    "nodeVersion": "v24.8.0",
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\miche\\OneDrive\\My Projects\\VS Studio Full Stack\\MySysLib\\server.js"
+    ],
+    "execPath": "C:\\Program Files\\nodejs\\node.exe",
+    "cwd": "C:\\Users\\miche\\OneDrive\\My Projects\\VS Studio Full Stack\\MySysLib",
+    "memoryUsage": {
+      "rss": 54489088,
+      "heapTotal": 17625088,
+      "heapUsed": 10991000,
+      "external": 2502760,
+      "arrayBuffers": 18703
+    },
+    "uptimeSec": 0.8541564
+  },
+  "os": {
+    "platform": "win32",
+    "type": "Windows_NT",
+    "release": "10.0.26100",
+    "arch": "x64",
+    "cpus": [
+      {
+        "model": "13th Gen Intel(R) Core(TM) i5-13400F",
+        "speed": 2496,
+        "times": {
+          "user": 13913765,
+          "nice": 0,
+          "sys": 7414875,
+          "idle": 97185171,
+          "irq": 1404078
+        }
+      },
+      {
+        "model": "13th Gen Intel(R) Core(TM) i5-13400F",
+        "speed": 2496,
+        "times": {
+          "user": 3218234,
+          "nice": 0,
+          "sys": 1477328,
+          "idle": 113818093,
+          "irq": 247765
+        }
+      },
+      {
+        "model": "13th Gen Intel(R) Core(TM) i5-13400F",
+        "speed": 2496,
+        "times": {
+          "user": 26179109,
+          "nice": 0,
+          "sys": 5743109,
+          "idle": 86591484,
+          "irq": 489656
+        }
+      },
+      {
+        "model": "13th Gen Intel(R) Core(TM) i5-13400F",
+        "speed": 2496,
+        "times": {
+          "user": 4576812,
+          "nice": 0,
+          "sys": 1451703,
+          "idle": 112485187,
+          "irq": 207671
+        }
+      },
+      {
+        "model": "13th Gen Intel(R) Core(TM) i5-13400F",
+        "speed": 2496,
+        "times": {
+          "user": 15185015,
+          "nice": 0,
+          "sys": 4861515,
+          "idle": 98467171,
+          "irq": 368765
+        }
+      },
+      {
+        "model": "13th Gen Intel(R) Core(TM) i5-13400F",
+        "speed": 2496,
+        "times": {
+          "user": 3295437,
+          "nice": 0,
+          "sys": 1326140,
+          "idle": 113892125,
+          "irq": 176937
+        }
+      },
+      {
+        "model": "13th Gen Intel(R) Core(TM) i5-13400F",
+        "speed": 2496,
+        "times": {
+          "user": 16252203,
+          "nice": 0,
+          "sys": 4734078,
+          "idle": 97527421,
+          "irq": 298593
+        }
+      },
+      {
+        "model": "13th Gen Intel(R) Core(TM) i5-13400F",
+        "speed": 2496,
+        "times": {
+          "user": 3640703,
+          "nice": 0,
+          "sys": 1221062,
+          "idle": 113651937,
+          "irq": 134750
+        }
+      },
+      {
+        "model": "13th Gen Intel(R) Core(TM) i5-13400F",
+        "speed": 2496,
+        "times": {
+          "user": 18017703,
+          "nice": 0,
+          "sys": 4653906,
+          "idle": 95842093,
+          "irq": 252921
+        }
+      },
+      {
+        "model": "13th Gen Intel(R) Core(TM) i5-13400F",
+        "speed": 2496,
+        "times": {
+          "user": 3514781,
+          "nice": 0,
+          "sys": 1096359,
+          "idle": 113902562,
+          "irq": 99937
+        }
+      },
+      {
+        "model": "13th Gen Intel(R) Core(TM) i5-13400F",
+        "speed": 2496,
+        "times": {
+          "user": 18852906,
+          "nice": 0,
+          "sys": 4889046,
+          "idle": 94771750,
+          "irq": 229968
+        }
+      },
+      {
+        "model": "13th Gen Intel(R) Core(TM) i5-13400F",
+        "speed": 2496,
+        "times": {
+          "user": 3609531,
+          "nice": 0,
+          "sys": 1040000,
+          "idle": 113864125,
+          "irq": 62125
+        }
+      },
+      {
+        "model": "13th Gen Intel(R) Core(TM) i5-13400F",
+        "speed": 2496,
+        "times": {
+          "user": 13805156,
+          "nice": 0,
+          "sys": 5837515,
+          "idle": 98871031,
+          "irq": 338343
+        }
+      },
+      {
+        "model": "13th Gen Intel(R) Core(TM) i5-13400F",
+        "speed": 2496,
+        "times": {
+          "user": 17627328,
+          "nice": 0,
+          "sys": 6117484,
+          "idle": 94768890,
+          "irq": 288437
+        }
+      },
+      {
+        "model": "13th Gen Intel(R) Core(TM) i5-13400F",
+        "speed": 2496,
+        "times": {
+          "user": 19268640,
+          "nice": 0,
+          "sys": 6019171,
+          "idle": 93225890,
+          "irq": 278781
+        }
+      },
+      {
+        "model": "13th Gen Intel(R) Core(TM) i5-13400F",
+        "speed": 2496,
+        "times": {
+          "user": 21082718,
+          "nice": 0,
+          "sys": 5930312,
+          "idle": 91500671,
+          "irq": 266281
+        }
+      }
+    ],
+    "totalMemoryMB": 16226,
+    "freeMemoryMB": 2943,
+    "hostname": "MSI2023",
+    "homedir": "C:\\Users\\miche",
+    "tmpdir": "C:\\Users\\miche\\AppData\\Local\\Temp",
+    "networkInterfaces": {
+      "Ethernet 3": [
+        {
+          "address": "fe80::b7b0:d102:6a21:37df",
+          "netmask": "ffff:ffff:ffff:ffff::",
+          "family": "IPv6",
+          "mac": "0a:00:27:00:00:13",
+          "internal": false,
+          "cidr": "fe80::b7b0:d102:6a21:37df/64",
+          "scopeid": 19
+        },
+        {
+          "address": "192.168.56.1",
+          "netmask": "255.255.255.0",
+          "family": "IPv4",
+          "mac": "0a:00:27:00:00:13",
+          "internal": false,
+          "cidr": "192.168.56.1/24"
+        }
+      ],
+      "Wi-Fi": [
+        {
+          "address": "2001:18c0:aa4:2500:2a87:e1ca:7d8f:c210",
+          "netmask": "ffff:ffff:ffff:ffff::",
+          "family": "IPv6",
+          "mac": "f6:88:93:1b:99:3e",
+          "internal": false,
+          "cidr": "2001:18c0:aa4:2500:2a87:e1ca:7d8f:c210/64",
+          "scopeid": 0
+        },
+        {
+          "address": "2001:18c0:aa4:2500:40da:b795:cc72:81cb",
+          "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+          "family": "IPv6",
+          "mac": "f6:88:93:1b:99:3e",
+          "internal": false,
+          "cidr": "2001:18c0:aa4:2500:40da:b795:cc72:81cb/128",
+          "scopeid": 0
+        },
+        {
+          "address": "2001:18c0:aa4:2500:48f4:b37f:bdba:586e",
+          "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+          "family": "IPv6",
+          "mac": "f6:88:93:1b:99:3e",
+          "internal": false,
+          "cidr": "2001:18c0:aa4:2500:48f4:b37f:bdba:586e/128",
+          "scopeid": 0
+        },
+        {
+          "address": "2001:18c0:aa4:2500:fcee:7026:bfbb:c6e0",
+          "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+          "family": "IPv6",
+          "mac": "f6:88:93:1b:99:3e",
+          "internal": false,
+          "cidr": "2001:18c0:aa4:2500:fcee:7026:bfbb:c6e0/128",
+          "scopeid": 0
+        },
+        {
+          "address": "fe80::3855:a0f2:f415:e880",
+          "netmask": "ffff:ffff:ffff:ffff::",
+          "family": "IPv6",
+          "mac": "f6:88:93:1b:99:3e",
+          "internal": false,
+          "cidr": "fe80::3855:a0f2:f415:e880/64",
+          "scopeid": 15
+        },
+        {
+          "address": "192.168.40.128",
+          "netmask": "255.255.255.0",
+          "family": "IPv4",
+          "mac": "f6:88:93:1b:99:3e",
+          "internal": false,
+          "cidr": "192.168.40.128/24"
+        }
+      ],
+      "Loopback Pseudo-Interface 1": [
+        {
+          "address": "::1",
+          "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+          "family": "IPv6",
+          "mac": "00:00:00:00:00:00",
+          "internal": true,
+          "cidr": "::1/128",
+          "scopeid": 0
+        },
+        {
+          "address": "127.0.0.1",
+          "netmask": "255.0.0.0",
+          "family": "IPv4",
+          "mac": "00:00:00:00:00:00",
+          "internal": true,
+          "cidr": "127.0.0.1/8"
+        }
+      ]
+    }
+  },
+  "versions": {
+    "node": "24.8.0",
+    "acorn": "8.15.0",
+    "ada": "3.2.7",
+    "amaro": "1.1.2",
+    "ares": "1.34.5",
+    "brotli": "1.1.0",
+    "cjs_module_lexer": "2.1.0",
+    "cldr": "47.0",
+    "icu": "77.1",
+    "llhttp": "9.3.0",
+    "modules": "137",
+    "napi": "10",
+    "nbytes": "0.1.1",
+    "ncrypto": "0.0.1",
+    "nghttp2": "1.66.0",
+    "openssl": "3.5.2",
+    "simdjson": "3.13.0",
+    "simdutf": "6.4.0",
+    "sqlite": "3.50.4",
+    "tz": "2025b",
+    "undici": "7.14.0",
+    "unicode": "16.0",
+    "uv": "1.51.0",
+    "uvwasi": "0.0.23",
+    "v8": "13.6.233.10-node.27",
+    "zlib": "1.3.1-470d3a2",
+    "zstd": "1.5.7"
+  }
+}
