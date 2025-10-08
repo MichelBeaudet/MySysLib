@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Admin Page</title>
+</head>
+<body>
+    <h1>Admin Test Page</h1>
+    <h1 id="status" ¨></h1>
+    <label>
+        username
+        <input id="username" type="text" value="MikeBeaudet" />
+    </label>
+    <button id="test_btn">Test me</button>
+    <script>
+        //const username = prompt("Please enter your name:", "Mike Beaudet");
+        //const password = prompt("Please enter your password:", "mypassword");
+        //alert("This is a temp test page.");
+        const username = document.getElementById("username");
+        const status = document.getElementById("status");
+        const test_btn = document.getElementById("test_btn");
+        test_btn.onclick = function () {
+            if (username.value === "MikeBeaudet" ) {
+                status.textContent = "Test successful!";
+                status.style.color = "green";
+            } else {
+                status.textContent = "Test failed. Please try again.";
+                status.style.color = "red";
+            }
+        };
+    </script>
+
+</body>
+</html>

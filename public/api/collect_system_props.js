@@ -37,7 +37,16 @@ function collect_system_props() {
 }
 
 module.exports = { collect_system_props };
-
+function writeStartupSnapshot() {
+    try {
+        if (!fs.existsSync(publicDir)) fs.mkdirSync(publicDir, { recursive: true });
+        fs.writeFileSync(snapshotFile, JSON.stringify(collect_system_props(), null, 2), 'utf-8');
+        console.log(`\n***Startup snapshot written to ${snapshotFile}`);
+    } catch (e) {
+        console.warn('Could not write startup snapshot:', e.message);
+    }
+};
+writeStartupSnapshot()
 // --- Optional CLI usage: 
 if (require.main === module) {
     const data = collect_system_props();

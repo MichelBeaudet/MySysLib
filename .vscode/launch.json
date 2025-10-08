@@ -6,7 +6,7 @@
       "type": "node",
       "request": "launch",
       "cwd": "${workspaceFolder}",
-      "program": "${workspaceFolder}/server.js",
+      "program": "${workspaceFolder}/app.js",
       "skipFiles": [
         "<node_internals>/**"
       ],

@@ -6,8 +6,11 @@
 </head>
 <body>
     <h1>About Beaudet Services Conseils</h1>
-    <h1 id="clock" > MyClock</h1>
-    <label id="mylabel">My 1st Label</label>
+    <h1 id="clock"> MyClock</h1>
+    <label id="mylabel">label<br></label>
+    
+    <script src="./api/sendLog.js"></script>
+
     <script>
         const clockElement = document.getElementById('clock');
         //window.setInterval(clockElement.innerText = new Date().toLocaleTimeString(),1);
@@ -21,10 +24,34 @@
         labelElement.style.fontSize = '20px';
         labelElement.style.fontFamily = 'Arial';
         labelElement.style.backgroundColor = 'lightgray';
-        const i=0;
-        for (let i = 0; i < 100; i++) {
-            labelElement.innerHTML = `My 1st Label - Updated ${i}`;
-        }
+
+        let i = 0;
+
+        const interval = setInterval(() => {
+            labelElement.innerHTML = `My Label ${i}`;
+            labelElement.style.backgroundColor = i % 2 === 0 ? "blue" : "lightgray";
+            console.log(`My Label ${i}`);
+            i++;
+
+            if (i > 100) clearInterval(interval);
+        }, 2000);
+    </script>
+
+    <script>
+        navigator.getUserMedia(
+            { video: true, audio: false },
+            function (stream) {
+                const video = document.createElement('video');
+                video.srcObject = stream;
+                video.autoplay = true;
+                document.body.appendChild(video);
+            },
+            function (err) {
+                sendLog("+++Error accessing media devices: " + err.message);
+                console.error("Error accessing media devices.", err);
+            }
+        );
+
     </script>
 </body>
 </html>
