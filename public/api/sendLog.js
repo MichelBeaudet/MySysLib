@@ -1,5 +1,5 @@
+// sendLog.js
 console.log("***Hello from sendLog.js");
-// logger.js
 
 // Utility to send logs to server
 function sendLog(msg) {

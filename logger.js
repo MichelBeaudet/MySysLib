@@ -10,14 +10,11 @@ const bg = (n) => (s) => (COLOR ? `\x1b[${n}m${s}\x1b[0m` : String(s));
 const bgi = bg("48;5;238"); // subtle dark bg for banners
 
 const time = () => new Date().toLocaleTimeString();
-
 function hr(char = "─", width = process.stdout.columns || 80) {
     const line = char.repeat(Math.max(20, Math.min(width, 120)));
     process.stdout.write(gray(line) + os.EOL);
 }
-
 function pad(s = "", n = 2) { return " ".repeat(n) + s; }
-
 function box(title = "", lines = [], color = cyan) {
     const width = Math.min(Math.max(40, (process.stdout.columns || 80) - 2), 120);
     const top = "┌" + "─".repeat(width - 2) + "┐";
@@ -35,14 +32,12 @@ function box(title = "", lines = [], color = cyan) {
     }
     console.log(color(bot));
 }
-
 function banner(left = "MySysLib", right = "") {
     const L = pad(left);
     const R = right ? pad(gray(`• ${right}`)) : "";
     const full = bgi(bold(L + R));
     console.log(full);
 }
-
 function mkLogger(contextFile) {
     const ctx = path.basename(contextFile || "");
     const prefix = () => gray(`[${time()}]`) + " " + cyan(ctx ? `(${ctx})` : "");
