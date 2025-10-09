@@ -18,7 +18,8 @@ log.banner("MySysLib", "App bootstrap");
 log.step("Context", {
     "Current file": path.basename(__filename),
     "Current dir": path.basename(__dirname),
-    "Version": "1.0.0"
+    "Version": "2.0.0",
+    "Author" : "Mike Beaudet",
 });
 
 // Initial log
@@ -26,24 +27,26 @@ log.ok(`${path.basename(__filename)} initialized`);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    log.ok(`"Server listening on http://localhost:${PORT}"`);
+    log.ok(`Server listening on http://localhost:${PORT}`);
 });
 
 // API: log message from client to server console
 app.get("/log", (req, res) => {
     const msg = req.query.msg || "(vide)";
-    console.log("[CLIENT LOG]", msg);
+    log.ok('/log');
+    log.ok("[CLIENT LOG]:" + msg);
     res.sendStatus(200);
 });
 
 // Handle admin
 app.get('/admin', function (req, res) {
-    console.log('***get /admin');
+    log.ok('/admin');
     res.sendFile(path.join(__dirname, 'public', 'admin.html'));
 });
 
 // Running python script to get next code snippet
-app.get('/next', (req, res) => {
+app.get('/run_python', (req, res) => {
+    log.ok('/next');
     const PYTHON_CMD = process.env.PYTHON_CMD || 'python';
     const scriptPath = path.join(__dirname, './public/api/hacker_terminal_snippet.py');
 
@@ -73,7 +76,8 @@ app.get('/next', (req, res) => {
 app.post('/run_exe', (req, res) => {
     const exePath = 'C:/Users/miche/OneDrive/My Projects/VS Studio Projects/MyRainMatrix/dist/Matrix_Rain/Matrix_Rain.exe';
     const exeDir = path.dirname(exePath);
-    console.log(`\n*** EXE launch requested for ${exePath}`);
+    log.ok(`POST /run_exe: called EXE launch requested for ${exePath}`);
+
     try {
         if (!fs.existsSync(exePath)) {
             return res.status(404).send(`Not found: ${exePath}`);
@@ -93,16 +97,16 @@ app.post('/run_exe', (req, res) => {
 
         child.unref(); // let process live on its own
         res.send({ Result: "EXE launch done!" });
-        console.log("*** EXE launch done!");
+        log.ok("*** EXE launch done!");
     } catch (e) {
         console.error(e);
         res.status(500).send(e.message);
     }
 });
 
-// API: fresh system params each call
+// API: system params each call
 app.get('/api/collect_system_props', (req, res) => {
-    console.log("***/api/collect_system_props called by app.js");                                     
+    log.ok('*** GET /api/collect_system_props');
     const { collect_system_props } = require('./public/api/collect_system_props');
     try {
         const data = collect_system_props();

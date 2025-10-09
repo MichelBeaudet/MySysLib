@@ -13,6 +13,10 @@
         <input id="username" type="text" value="MikeBeaudet" />
     </label>
     <button id="test_btn">Test me</button>
+    
+    <!-- Script to send console.log to the server via sendLog.js-->
+    <script src="./api/sendLog.js"></script>
+
     <script>
         //const username = prompt("Please enter your name:", "Mike Beaudet");
         //const password = prompt("Please enter your password:", "mypassword");
@@ -20,8 +24,10 @@
         const username = document.getElementById("username");
         const status = document.getElementById("status");
         const test_btn = document.getElementById("test_btn");
+        sendlog(`Admin page loaded for user: " + ${username.value}`);
+
         test_btn.onclick = function () {
-            if (username.value === "MikeBeaudet" ) {
+            if (username.value === "MikeBeaudet") {
                 status.textContent = "Test successful!";
                 status.style.color = "green";
             } else {
@@ -29,6 +35,7 @@
                 status.style.color = "red";
             }
         };
+        sendlog(`Admin page unloaded for user: " + ${username.value}`);
     </script>
 
 </body>
