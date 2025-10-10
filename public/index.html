@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Main Web Page of Mike</title>
+    
+    <!-- Style sheet properties-->
     <style>
         * {
             box-sizing: border-box;
@@ -49,19 +51,53 @@
                     color: blue;
                 }
 
-        p {
-            font-size: 25px;
-        }
-
         section {
             border: 2px solid #333; /* thickness, style, color */
             padding: 15px; /* space inside the border */
             margin: 20px; /* space outside the border */
             border-radius: 8px; /* optional: rounded corners */
             background: #fafafa; /* optional: light background */
+            height: auto;
         }
 
-        aside {
+        p {
+            font-size: 25px;
+        }
+
+        /* 3-column layout: left_sidebar_goodies + main + right_sidebar_properties*/
+        .div_layout {
+            display: flex;
+            min-height: 100vh;
+            flex-direction: row; /* ensures is on the left */
+        }
+
+        .logo {
+            display: flex;
+            border: 5px solid #ccc;
+            position: absolute;
+            top: 10px; /* distance from top */
+            left: 20px; /* distance from left */
+            width: 120px;
+            height: auto;
+        }
+
+        .left_sidebar_goodies {
+            margin-top: 10px;
+            left: 20px ;
+            width: 220px;
+            padding: 15px;
+            font-size: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+            .left_sidebar_goodies a:hover {
+                color: forestgreen;
+            }
+
+        .right_sidebar_properties {
+            margin-top: 10px;
             width: 220px;
             background: #222;
             color: white;
@@ -72,61 +108,21 @@
             align-items: flex-start;
         }
 
-            aside a {
-                color: #9ee37d;
-                text-decoration: none;
-                font-weight: bold;
-                margin: 8px 0; /* vertical space between links */
-                transition: color 0.2s;
+        right_sidebar_properties a {
+            color: #9ee37d;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 8px 0; /* vertical space between links */
+            transition: color 0.2s;
+        }
+            right_sidebar_properties a:hover {
+                color: red;
             }
-
-                aside a:hover {
-                    color: #fff;
-                }
-
-        /* Two-column layout: aside + main */
-        .layout {
-            display: flex;
-            min-height: 100vh;
-            flex-direction: row; /* ensures aside is on the left */
-        }
-
-        .logo {
-            border: 5px solid #ccc;
-            position:  absolute;
-            top: 10px; /* distance from top */
-            left: 20px; /* distance from left */
-            max-width: 200px;
-            height: auto;
-            z-index: 100; /* keep above other elements */
-        }
-
-        .utils {
-            background: #fafafa;
-            color: #000;
-            border: 1px solid #ccc;
-            padding: 15px;
-            border-radius: 8px;
-        }
-
-        .left_sidebar {
-            margin-top: 160px;
-            width: 220px;
-            padding: 15px;
-            font-size: 15px;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-
-            .left_sidebar a:hover {
-                color: forestgreen;
-            }
-
     </style>
 
 </head>
 <body>
+    <img class="logo" src="Beaudet Services Conseils.png" alt="Description" />
     <!-- My top nav section  -->
     <nav>
         <a href="about.html">About</a>
@@ -134,72 +130,82 @@
         <a href="Beaudet_SC_webpage.html">Page Web de Beaudet Services Conseils</a>
     </nav>
 
-    <img class="logo" src="Beaudet Services Conseils.png" alt="Description" />
+    <h1 style="text-align: center;">Main Web Page of Mike v2.1</h1>
 
-    <div class="layout">
-        <!-- My left_sidebar section  -->
-        <section class="left_sidebar">
-            <p><b><u>Goodies</u></b></p>
-            <a href="fun_useful_apis.html">fun_useful_apis</a><br />
-            <a href="hacker_terminal_simple.html">hacker_terminal_simple</a><br />
-            <a href="hacker_terminal.html">hacker_terminal</a><br />
-            <a href="telemetry_props.html">telemetry_props</a><br />
-            <a href="run_exe.html">RUN MyRain.exe</a><br />
-            <a href="run_python.html">RUN python</a><br />
-            <a href="admin.html">admin</a><br />
-            <a href="login_page.html">login</a><br />
-            <a href="request_page.html">request_page</a><br />
 
+    <div class="div_layout">
+        <!-- My main   -->
+        <main>
+
+            <!-- My left_sidebar section  -->
+            <section class="left_sidebar_goodies">
+                <p><b><u>Goodies</u></b></p>
+                <a href="fun_useful_apis.html">fun_useful_apis</a><br />
+                <a href="hacker_terminal_simple.html">hacker_terminal_simple</a><br />
+                <a href="hacker_terminal.html">hacker_terminal</a><br />
+                <a href="telemetry_props.html">telemetry_props</a><br />
+                <a href="run_exe.html">RUN MyRain.exe</a><br />
+                <a href="run_python.html">RUN python</a><br />
+                <a href="admin.html">admin</a><br />
+                <a href="login_page.html">login</a><br />
+                <a href="request_page.html">request_page</a><br />
+            </section>
+
+        </main>
+
+        <!-- My todo section  -->
+        <section id="todo">
+            <h2><b><strong>Tests to be done !</strong></b></h2>
+            <ul>
+                <li>Adapt for ipad</li>
+                <li>history.back()</li>
+                <li>history.forward()</li>
+                <li>history.go()</li>
+            </ul>
+        </section>
+
+        <!-- My article section-->
+        <section class="article">
+            <h2><b><strong>Thoughts of the day:</strong></b></h2>
+            <article>
+                “Imagination is more important than knowledge. <br />
+                Knowledge is limited. <br />
+                Imagination encircles the world.”
+            </article>
+        </section>
+
+        <!-- My right_sidebar section  -->
+        <section class="right_sidebar_properties">
             <p><b><u>Properties</u></b></p>
+
             <strong>Navigator Properties</strong>
-            <button onclick="window.open('navigator_props.html','_blank')">Navigator Properties</button>
+            <button onclick="location.href='navigator_props.html'">Navigator Properties</button>
 
             <br /><br />
-            <strong>System Properties</strong>
+            <strong>System Properties with history back</strong>
+            <button onclick="location.href='system_props.html'">System Properties</button>
+            
+            <br /><br />
+            <strong>System Properties with no history back</strong>
             <button onclick="window.open('system_props.html','_blank')">System Properties</button>
 
             <br /><br />
             <strong>Windows Properties</strong>
-            <button onclick="window.open('window_props.html','_blank')">Windows Properties</button>
+            <button onclick="window.open('window_props.html','_self')">Windows Properties</button>
 
             <br /><br />
             <strong>Document Properties</strong>
-            <button onclick="window.open('document_props.html','_blank')">Document Properties</button>
+            <button onclick="window.open('document_props.html','_self')">Document Properties</button>
 
             <br /><br />
             <strong>Element Properties</strong>
-            <button onclick="window.open('element_props.html','_blank')">Element Properties</button>
+            <button onclick="window.open('element_props.html','_self')">Element Properties</button>
 
             <br /><br />
             <strong>DOM Properties</strong>
             <button onclick="window.open('DOM_props.html','_blank')">DOM Properties</button>
         </section>
 
-        <!-- My main   -->
-        <main>
-            <h1>Main Web Page of Mike v2.1</h1>
-
-            <!-- My todo section  -->
-            <section id="todo">
-                <h2><b><strong>Tests to be done !</strong></b></h2>
-                <ul>
-                    <li>Adapt for ipad</li>
-                    <li>history.back()</li>
-                    <li>history.forward()</li>
-                    <li>history.go()</li>
-                </ul>
-            </section>
-
-            <!-- My article section-->
-            <section class="article">
-                <h2><b><strong>Thoughts of the day:</strong></b></h2>
-                <article>
-                    “Imagination is more important than knowledge. <br />
-                    Knowledge is limited. <br />
-                    Imagination encircles the world.”
-                </article>
-            </section>
-        </main>
     </div>
 
     <!-- My footer -->
@@ -226,5 +232,6 @@
             footerMsg.textContent = " | " + msg;
         }
     </script>
+
 </body>
 </html>

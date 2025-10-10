@@ -23,20 +23,5 @@
         }
     </script>
 
-    <script>
-        //Run via fetch to backend
-        document.getElementById('run_exe_fetch').addEventListener('click', async () => {
-            sendLog("Attempting to run the EXE via fetch...");
-            try {
-                //const r = await fetch('/run_python', { method: 'POST' });
-                const r = await fetch('/run_python', { method: 'GET' });
-                const j = await r.json();
-                document.getElementById('out').textContent = JSON.stringify(j, null, 2);
-            } catch (e) {
-                document.getElementById('out').textContent = 'Fetch error: ' + e;
-            }
-        });
-    </script>
-
 </body>
 </html>

@@ -121,4 +121,19 @@ app.get('/api/collect_system_props', (req, res) => {
 });
 module.exports = app;
 
+// (Optional) GET alias if you insist on GET (not recommended for side-effects)
+function clearConsole() {
+    // ANSI clear + home cursor
+    console.log('[server] Trying to clear console');
+    process.stdout.write('\x1B[2J\x1B[0;0H');
+    if (typeof console.clear === 'function') console.clear();
+    console.log('[server] Console cleared at', new Date().toISOString());
+}
+app.get('/admin/console/clear', (req, res) => {
+    // 🔒 (Optional but wise) a super-simple “secret” to avoid random clears
+    console.log("/admin/console/clear");
+    clearConsole();
+    res.json({ ok: true });
+});
+
 log.ok(`${path.basename(__filename)} terminated`);

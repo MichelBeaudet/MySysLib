@@ -39,10 +39,15 @@
             };
         </script>
 
-        <p id="paragraph1" Put sometyhing here in paragraph1 </p>
+        <p id="paragraph1"> Put sometyhing here in paragraph1 </p>
 
     </main>
 
-    <script src="./api/element_props.js"></script>
+    <!-- Script to send console.log to the server via sendLog.js-->
+    <script src="./api/sendLog.js"></script>
+    <script>
+        sendLog("+++element page loaded");
+    </script>
+    <script src="./api/BASE_element_props.js"></script>
 </body>
 </html>

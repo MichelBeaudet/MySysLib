@@ -2,13 +2,14 @@
 console.log("***sendLog.js called");
 
 // Utility to send logs to server
-function sendLog(msg) {
-    fetch("/log?msg=" + encodeURIComponent(msg))
-        .catch(err => {
-            console.error("Impossible d'envoyer le log au serveur:", err);
-        });
-}
-window.sendLog = sendLog;
+window.sendLog = function sendLog(msg) {
+    try {
+        // Example: send to your server (adjust the route as needed)
+        fetch(`/log?msg=${encodeURIComponent(msg)}`).catch(() => { });
+    } catch (e) {
+        console.log('[sendLog fallback]', msg);
+    }
+};
 
 // Get HTML page name
 const pageName = window.location.pathname.split("/").pop() || "index.html";

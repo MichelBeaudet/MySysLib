@@ -27,7 +27,7 @@
     </header>
 
     <main id="content">
-        
+
         <script>
             // This is the script to see errors in the web page.
             window.onerror = function (message, source, lineno, colno, error) {
@@ -38,10 +38,16 @@
             };
         </script>
 
-        <p id="paragraph1" Put sometyhing here in paragraph1 </p>
+        <p id="paragraph1"> Put sometyhing here in paragraph1 </p>
 
     </main>
 
-    <script src="./api/window_props.js"></script>
+    <!-- Script to send console.log to the server via sendLog.js-->
+    <script src="./api/sendLog.js"></script>
+    <script>
+        sendLog("+++window page loaded");
+    </script>
+
+    <script src="./api/BASE_window_props.js"></script>
 </body>
 </html>

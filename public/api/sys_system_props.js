@@ -9,7 +9,7 @@ const run_collect_system_prop = document.getElementById('run_collect_system_prop
 // Get the current script file name
 const currentScript = document.currentScript;
 const parts = currentScript.src.split("/");
-console.log("*** Running script system_props.js:", parts.pop());
+sendLog("*** Running script system_props.js:", parts.pop());
 
 async function loadLive() {
     setStatus('Fetching /api/collect_system_prop …');

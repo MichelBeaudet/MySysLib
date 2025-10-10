@@ -166,199 +166,199 @@
   - pyodide: loads Pyodide on demand and runs a tiny Python snippet that prints JSON {"code": "..."}
 */
 
-const out = document.getElementById('out');
-const statusEl = document.getElementById('status');
-const msInput = document.getElementById('ms');
-const startBtn = document.getElementById('start');
-const stopBtn = document.getElementById('stop');
-const oneBtn = document.getElementById('one');
-const clearBtn = document.getElementById('clear');
-const modeSelect = document.getElementById('mode');
-const modeNote = document.getElementById('modeNote');
+        const out = document.getElementById('out');
+        const statusEl = document.getElementById('status');
+        const msInput = document.getElementById('ms');
+        const startBtn = document.getElementById('start');
+        const stopBtn = document.getElementById('stop');
+        const oneBtn = document.getElementById('one');
+        const clearBtn = document.getElementById('clear');
+        const modeSelect = document.getElementById('mode');
+        const modeNote = document.getElementById('modeNote');
 
-const PALETTE = ["#39ff14","#00ffff","#ffd166","#ff6b6b","#a0e7e5","#b9f18a","#b388ff","#64ffda"];
+        const PALETTE = ["#39ff14","#00ffff","#ffd166","#ff6b6b","#a0e7e5","#b9f18a","#b388ff","#64ffda"];
 
-let timer = null;
-let pyodide = null;
-let pyReady = false;
+        let timer = null;
+        let pyodide = null;
+        let pyReady = false;
 
-// --- SNIPPETS (simulate mode) ---
-const STATIC_SNIPPETS = [
-`def fib(n):
-    a,b=0,1
-    for _ in range(n):
-        yield a
-        a,b=b,a+b`,
+        // --- SNIPPETS (simulate mode) ---
+        const STATIC_SNIPPETS = [
+        `def fib(n):
+            a,b=0,1
+            for _ in range(n):
+                yield a
+                a,b=b,a+b`,
 
-`from dataclasses import dataclass
-@dataclass
-class Point:
-    x: float
-    y: float
-    def norm2(self):
-        return self.x*self.x + self.y*self.y`,
+        `from dataclasses import dataclass
+        @dataclass
+        class Point:
+            x: float
+            y: float
+            def norm2(self):
+                return self.x*self.x + self.y*self.y`,
 
-`class Stack:
-    def __init__(self):
-        self._data=[]
-    def push(self,x): self._data.append(x)
-    def pop(self): return self._data.pop()`,
+        `class Stack:
+            def __init__(self):
+                self._data=[]
+            def push(self,x): self._data.append(x)
+            def pop(self): return self._data.pop()`,
 
-`async def fetch(n):
-    import asyncio
-    await asyncio.sleep(0.01)
-    return n*n`,
+        `async def fetch(n):
+            import asyncio
+            await asyncio.sleep(0.01)
+            return n*n`,
 
-`with open('data.txt','w',encoding='utf-8') as f:
-    f.write('hello')`,
+        `with open('data.txt','w',encoding='utf-8') as f:
+            f.write('hello')`,
 
-`def pairwise_sum(xs):
-    import itertools as it
-    return [a+b for a,b in it.pairwise(xs)]`,
+        `def pairwise_sum(xs):
+            import itertools as it
+            return [a+b for a,b in it.pairwise(xs)]`,
 
-`try:
-    1/0
-except ZeroDivisionError:
-    pass`,
+        `try:
+            1/0
+        except ZeroDivisionError:
+            pass`,
 
-`# short util
-@staticmethod
-def util(x): return x*x`,
+        `# short util
+        @staticmethod
+        def util(x): return x*x`,
 
-`squares = [i*i for i in range(10)]`,
-];
+        `squares = [i*i for i in range(10)]`,
+        ];
 
-// --- Utility: colorize a block into HTML ---
-function colorizeBlock(text){
-  return text.split('\\n').map(line=>{
-    const c = PALETTE[Math.floor(Math.random()*PALETTE.length)];
-    const safe = line.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-    return `<div class="line"><span style="color:${c}">${safe}</span></div>`;
-  }).join('\\n');
-}
+        // --- Utility: colorize a block into HTML ---
+        function colorizeBlock(text){
+          return text.split('\\n').map(line=>{
+            const c = PALETTE[Math.floor(Math.random()*PALETTE.length)];
+            const safe = line.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+            return `<div class="line"><span style="color:${c}">${safe}</span></div>`;
+          }).join('\\n');
+        }
 
-// --- Simulate mode: immediate local generator ---
-function getSimulatedSnippet(){
-  return STATIC_SNIPPETS[Math.floor(Math.random()*STATIC_SNIPPETS.length)];
-}
+        // --- Simulate mode: immediate local generator ---
+        function getSimulatedSnippet(){
+          return STATIC_SNIPPETS[Math.floor(Math.random()*STATIC_SNIPPETS.length)];
+        }
 
-// --- Pyodide mode: lazy load and call Python to produce JSON {"code": "..."} ---
-async function ensurePyodide(){
-  if(pyReady) return;
-  if(pyodide) return; // loading in progress
-  statusEl.textContent = "Statut: loading Pyodide…";
-  // load script tag
-  await new Promise((resolve, reject) => {
-    const s = document.createElement('script');
-    s.src = "https://cdn.jsdelivr.net/pyodide/v0.26.2/full/pyodide.js";
-    s.onload = resolve;
-    s.onerror = () => reject(new Error("Failed to load Pyodide script"));
-    document.head.appendChild(s);
-  });
-  try {
-    pyodide = await loadPyodide({ indexURL: "https://cdn.jsdelivr.net/pyodide/v0.26.2/full/" });
-    // install (define) Python helper next_snippet()
-    const py = `
-import random
-SNIPPETS = [
-${STATIC_SNIPPETS.map(s=> "    " + JSON.stringify(s)).join(",\n")}
-]
-def next_snippet():
-    return {"code": random.choice(SNIPPETS)}
-`;
-    await pyodide.runPythonAsync(py);
-    pyReady = true;
-    statusEl.textContent = "Statut: Pyodide ready";
-  } catch(e){
-    pyodide = null;
-    statusEl.textContent = "Statut: Pyodide error";
-    console.error("Pyodide init error:", e);
-    throw e;
-  }
-}
+        // --- Pyodide mode: lazy load and call Python to produce JSON {"code": "..."} ---
+        async function ensurePyodide(){
+          if(pyReady) return;
+          if(pyodide) return; // loading in progress
+          statusEl.textContent = "Statut: loading Pyodide…";
+          // load script tag
+          await new Promise((resolve, reject) => {
+            const s = document.createElement('script');
+            s.src = "https://cdn.jsdelivr.net/pyodide/v0.26.2/full/pyodide.js";
+            s.onload = resolve;
+            s.onerror = () => reject(new Error("Failed to load Pyodide script"));
+            document.head.appendChild(s);
+          });
+          try {
+            pyodide = await loadPyodide({ indexURL: "https://cdn.jsdelivr.net/pyodide/v0.26.2/full/" });
+            // install (define) Python helper next_snippet()
+            const py = `
+        import random
+        SNIPPETS = [
+        ${STATIC_SNIPPETS.map(s=> "    " + JSON.stringify(s)).join(",\n")}
+        ]
+        def next_snippet():
+            return {"code": random.choice(SNIPPETS)}
+        `;
+            await pyodide.runPythonAsync(py);
+            pyReady = true;
+            statusEl.textContent = "Statut: Pyodide ready";
+          } catch(e){
+            pyodide = null;
+            statusEl.textContent = "Statut: Pyodide error";
+            console.error("Pyodide init error:", e);
+            throw e;
+          }
+        }
 
-async function getPyodideSnippet(){
-  await ensurePyodide();
-  // call Python function next_snippet() which returns a dict; convert to JS
-  const res = await pyodide.runPythonAsync("next_snippet()");
-  // pyodide returns PyProxy -> convert to JS object/string
-  // simplest: stringify in Python and parse here:
-  const s = await pyodide.runPythonAsync("import json; json.dumps(next_snippet(), ensure_ascii=False)");
-  try {
-    const obj = JSON.parse(s);
-    return obj.code || "# no-code";
-  } catch(e){
-    console.error("Parsing JSON from pyodide:", e, s);
-    return "# pyodide returned invalid JSON";
-  }
-}
+        async function getPyodideSnippet(){
+          await ensurePyodide();
+          // call Python function next_snippet() which returns a dict; convert to JS
+          const res = await pyodide.runPythonAsync("next_snippet()");
+          // pyodide returns PyProxy -> convert to JS object/string
+          // simplest: stringify in Python and parse here:
+          const s = await pyodide.runPythonAsync("import json; json.dumps(next_snippet(), ensure_ascii=False)");
+          try {
+            const obj = JSON.parse(s);
+            return obj.code || "# no-code";
+          } catch(e){
+            console.error("Parsing JSON from pyodide:", e, s);
+            return "# pyodide returned invalid JSON";
+          }
+        }
 
-// --- Top-level fetcher: selects mode and returns code string ---
-async function fetchSnippet(){
-  const mode = modeSelect.value;
-  if(mode === "simulate"){
-    return getSimulatedSnippet();
-  } else {
-    // pyodide
-    try {
-      return await getPyodideSnippet();
-    } catch (e){
-      return `# Pyodide error: ${e.message || e}`;
-    }
-  }
-}
+        // --- Top-level fetcher: selects mode and returns code string ---
+        async function fetchSnippet(){
+          const mode = modeSelect.value;
+          if(mode === "simulate"){
+            return getSimulatedSnippet();
+          } else {
+            // pyodide
+            try {
+              return await getPyodideSnippet();
+            } catch (e){
+              return `# Pyodide error: ${e.message || e}`;
+            }
+          }
+        }
 
-// --- UI actions ---
-async function showOne(){
-  statusEl.textContent = "Statut: fetching…";
-  try {
-    const code = await fetchSnippet();
-    out.insertAdjacentHTML("beforeend", colorizeBlock(code) + "\\n");
-    out.parentElement.scrollTop = out.parentElement.scrollHeight;
-    statusEl.textContent = "Statut: OK";
-  } catch(e){
-    out.insertAdjacentHTML("beforeend", `<div class="line"><span style="color:#ff6b6b">[error] ${e.message || e}</span></div>\\n`);
-    statusEl.textContent = "Statut: erreur";
-    console.error(e);
-  }
-}
+        // --- UI actions ---
+        async function showOne(){
+          statusEl.textContent = "Statut: fetching…";
+          try {
+            const code = await fetchSnippet();
+            out.insertAdjacentHTML("beforeend", colorizeBlock(code) + "\\n");
+            out.parentElement.scrollTop = out.parentElement.scrollHeight;
+            statusEl.textContent = "Statut: OK";
+          } catch(e){
+            out.insertAdjacentHTML("beforeend", `<div class="line"><span style="color:#ff6b6b">[error] ${e.message || e}</span></div>\\n`);
+            statusEl.textContent = "Statut: erreur";
+            console.error(e);
+          }
+        }
 
-function startLoop(){
-  if(timer) return;
-  startBtn.disabled = true; stopBtn.disabled = false; msInput.disabled = true; modeSelect.disabled = true;
-  showOne();
-  timer = setInterval(showOne, Math.max(100, Number(msInput.value) || 900));
-  statusEl.textContent = "Statut: en cours";
-}
+        function startLoop(){
+          if(timer) return;
+          startBtn.disabled = true; stopBtn.disabled = false; msInput.disabled = true; modeSelect.disabled = true;
+          showOne();
+          timer = setInterval(showOne, Math.max(100, Number(msInput.value) || 900));
+          statusEl.textContent = "Statut: en cours";
+        }
 
-function stopLoop(){
-  if(!timer) return;
-  clearInterval(timer); timer = null;
-  startBtn.disabled=false; stopBtn.disabled=true; msInput.disabled=false; modeSelect.disabled=false;
-  statusEl.textContent = "Statut: arrêté";
-}
+        function stopLoop(){
+          if(!timer) return;
+          clearInterval(timer); timer = null;
+          startBtn.disabled=false; stopBtn.disabled=true; msInput.disabled=false; modeSelect.disabled=false;
+          statusEl.textContent = "Statut: arrêté";
+        }
 
-// --- events ---
-startBtn.addEventListener('click', startLoop);
-stopBtn.addEventListener('click', stopLoop);
-oneBtn.addEventListener('click', showOne);
-clearBtn.addEventListener('click', ()=>{ out.textContent=''; statusEl.textContent='Statut: prêt'; });
-modeSelect.addEventListener('change', ()=>{
-  modeNote.textContent = modeSelect.value === 'simulate' ? "Mode simulate active — aucune dépendance externe." :
-    "Mode pyodide sélectionné — Pyodide sera chargé à la première requête.";
-  // if switching to pyodide and already running, preload
-  if(modeSelect.value === 'pyodide' && timer){
-    // preload in background but don't block
-    ensurePyodide().catch(()=>{/*ignore*/});
-  }
-});
+        // --- events ---
+        startBtn.addEventListener('click', startLoop);
+        stopBtn.addEventListener('click', stopLoop);
+        oneBtn.addEventListener('click', showOne);
+        clearBtn.addEventListener('click', ()=>{ out.textContent=''; statusEl.textContent='Statut: prêt'; });
+        modeSelect.addEventListener('change', ()=>{
+          modeNote.textContent = modeSelect.value === 'simulate' ? "Mode simulate active — aucune dépendance externe." :
+            "Mode pyodide sélectionné — Pyodide sera chargé à la première requête.";
+          // if switching to pyodide and already running, preload
+          if(modeSelect.value === 'pyodide' && timer){
+            // preload in background but don't block
+            ensurePyodide().catch(()=>{/*ignore*/});
+          }
+        });
 
-// Optional: keyboard shortcuts
-document.addEventListener('keydown', (e)=>{
-  if(e.key === ' ') { e.preventDefault(); showOne(); }
-  if(e.key === 's') startLoop();
-  if(e.key === 'x') stopLoop();
-});
+        // Optional: keyboard shortcuts
+        document.addEventListener('keydown', (e)=>{
+          if(e.key === ' ') { e.preventDefault(); showOne(); }
+          if(e.key === 's') startLoop();
+          if(e.key === 'x') stopLoop();
+        });
     </script>
 </body>
 </html>

@@ -68,6 +68,9 @@
         <small id="status"></small>
     </header>
     <main>
+
+        <button id="btnClearConsole">clear console logs</button>
+
         <pre id="output">Loading…</pre>
         <p>
             <small>
@@ -84,5 +87,31 @@
     </script>
 
     <script src="./api/sys_system_props.js"></script>
+
+    <script>
+        /* Fully-commented, minimal client-side trigger */
+        sendLog(`System_props HTML page loaded:Trying to fetch /admin/console/clear`);
+        document.getElementById('btnClearConsole').addEventListener('click', async () => {
+            try {
+                // Use POST (recommended). If you prefer GET, change to fetch('/admin/console/clear?key=...')
+                const resp = await fetch('/admin/console/clear', {
+                    method: 'GET' // POST for side-effects
+                });
+
+                if (!resp.ok) {
+                    const msg = await resp.text().catch(() => '');
+                    throw new Error(`HTTP ${resp.status} ${msg}`);
+                }
+
+                // Optional: show quick feedback
+                console.log('[web] Requested server console clear.');
+                sendLog('[web] Requested server console clear.');
+            } catch (err) {
+                console.error('Failed to clear server console:', err);
+                alert('Failed to clear server console. See console for details.');
+            }
+        });
+    </script>
+
 </body>
 </html>
