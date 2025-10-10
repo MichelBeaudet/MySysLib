@@ -2,13 +2,23 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
-    <title>About Beaudet Services Conseils</title>
+    <title>Request page</title>
 </head>
 <body>
-    <h1>About Beaudet Services Conseils</h1>
+    <h1>Request page to do some tests</h1>
+
     <h1 id="clock"> MyClock</h1>
     <label id="mylabel">label<br></label>
-    
+
+    <section id="request_tests">
+        <h2>Available Tests to be done !</h2>
+        <ul>
+            <li>Web GET &lt;--- Server POST</li>
+            <li>Web POST ---&gt; Server GET</li>
+        </ul>
+    </section>
+
+
     <!-- Start scripts -->
     <script src="./api/sendLog.js"></script>
     <script>
@@ -31,29 +41,12 @@
         const interval = setInterval(() => {
             labelElement.innerHTML = `My Label ${i}`;
             labelElement.style.color = i % 2 === 0 ? "red" : "blue";
-            console.log(`My Label ${i}`);
-            sendLog(`My Label ${i}`);
+            //console.log(`My Label ${i}`);
+            //sendLog(`My Label ${i}`);
             i++;
 
             if (i > 100) clearInterval(interval);
         }, 2000);
-    </script>
-
-    <script>
-        //video playing from webcam
-        navigator.getUserMedia(
-            { video: true, audio: false },
-            function (stream) {
-                const video = document.createElement('video');
-                video.srcObject = stream;
-                video.autoplay = true;
-                document.body.appendChild(video);
-            },
-            function (err) {
-                sendLog("+++Error accessing media devices: " + err.message);
-                console.error("Error accessing media devices.", err);
-            }
-        );
     </script>
 </body>
 </html>

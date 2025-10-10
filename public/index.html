@@ -123,45 +123,14 @@
                 color: forestgreen;
             }
 
-        /* Right aside (for media) */
-        .media-side {
-            width: 500px;
-            display: flex;
-            flex-direction: column; /* stack elements */
-            align-items: flex-start; /* left-align content */
-            justify-content: flex-start; /* put content at the TOP */
-            padding: 10px;
-            border-radius: 8px;
-            align-items: center; /* center media vertically */
-        }
-
-            .media-side img,
-            .media-side video {
-                max-width: 100%;
-                max-height: 100%;
-                border-radius: 8px;
-                object-fit: cover; /* keeps proportions */
-            }
-
-        /* Optional: sticky sidebar */
-        @media (min-height: 0) {
-            aside {
-                position: sticky;
-                top: 0;
-                align-self: flex-start;
-                height: 100vh;
-                overflow: auto;
-            }
-        }
     </style>
-
 
 </head>
 <body>
     <!-- My top nav section  -->
     <nav>
         <a href="about.html">About</a>
-        <a href="login_page.html">Login Page</a>
+        <a href="members_login_page.html">Member's Page</a>
         <a href="Beaudet_SC_webpage.html">Page Web de Beaudet Services Conseils</a>
     </nav>
 
@@ -175,9 +144,11 @@
             <a href="hacker_terminal_simple.html">hacker_terminal_simple</a><br />
             <a href="hacker_terminal.html">hacker_terminal</a><br />
             <a href="telemetry_props.html">telemetry_props</a><br />
-            <a href="run_exe.html">RUN MyRain</a><br />
+            <a href="run_exe.html">RUN MyRain.exe</a><br />
             <a href="run_python.html">RUN python</a><br />
             <a href="admin.html">admin</a><br />
+            <a href="login_page.html">login</a><br />
+            <a href="request_page.html">request_page</a><br />
 
             <p><b><u>Properties</u></b></p>
             <strong>Navigator Properties</strong>
@@ -206,16 +177,13 @@
 
         <!-- My main   -->
         <main>
-            <h1>Main Web Page of Mike v2.0</h1>
+            <h1>Main Web Page of Mike v2.1</h1>
 
             <!-- My todo section  -->
             <section id="todo">
-                <h2>Tests to be done !</h2>
+                <h2><b><strong>Tests to be done !</strong></b></h2>
                 <ul>
                     <li>Adapt for ipad</li>
-                    <li>Develop a section with console.log = style echo</li>
-                    <li>Web GET &lt;--- Server POST</li>
-                    <li>Web POST ---&gt; Server GET</li>
                     <li>history.back()</li>
                     <li>history.forward()</li>
                     <li>history.go()</li>
@@ -224,7 +192,7 @@
 
             <!-- My article section-->
             <section class="article">
-                <p><b><strong>Thoughts of the day:</strong></b></p>
+                <h2><b><strong>Thoughts of the day:</strong></b></h2>
                 <article>
                     “Imagination is more important than knowledge. <br />
                     Knowledge is limited. <br />
@@ -232,28 +200,6 @@
                 </article>
             </section>
         </main>
-
-        <!-- Video player -->
-        <aside class="media-side">
-            <p><b><strong>My Magic vidéos!</strong></b></p>
-
-            <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
-                <input type="file" id="videoInput" accept="video/*" />
-                <button id="useDefaultBtn" type="button">Use default</button>
-                <span id="videoName" style="font-size:14px; opacity:.8;"></span>
-            </div>
-            <!-- Single video element -->
-            <video id="videoPlayer"
-                   controls
-                   autoplay
-                   muted
-                   playsinline
-                   preload="metadata"
-                   style="width:100%; max-width:100%; margin-top:10px; border-radius:8px;">
-                Your browser does not support the video tag.
-            </video>
-        </aside>
-
     </div>
 
     <!-- My footer -->
@@ -266,8 +212,7 @@
 
     <!-- Log to the server -->
     <script>
-        console.log("***Index.html loaded");
-        sendLog("+++Index.html loaded");
+        sendLog("index.html loaded");
     </script>
 
     <!-- Script to check login success-->
@@ -280,72 +225,6 @@
         if (footerMsg) {
             footerMsg.textContent = " | " + msg;
         }
-
-        /*
-        if (user !== null && user.trim() !== "") {
-          alert("You're logged now!");
-        } else {
-          alert("You're not logged !");
-          window.location.href = "login_page.html";
-        }
-        */
     </script>
-
-    <!-- Script to play video-->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const DEFAULT_SRC = 'Chink-a-chink v7.mp4'; // your default
-            const video = document.getElementById('videoPlayer');
-            const input = document.getElementById('videoInput');
-            const btn = document.getElementById('useDefaultBtn'); // if you added it
-            const name = document.getElementById('videoName');     // if you added it
-
-            let currentBlobURL = null; // track only the active blob url (if any)
-
-            function setLabel(label) { if (name) name.textContent = label || ''; }
-
-            function playSrc(src, label, isBlob = false) {
-                // Revoke the PREVIOUS blob (if any), not the new one
-                if (currentBlobURL) {
-                    URL.revokeObjectURL(currentBlobURL);
-                    currentBlobURL = null;
-                }
-
-                video.src = src;
-                video.load();
-
-                const p = video.play();
-                if (p && typeof p.catch === 'function') {
-                    p.catch(err => {
-                        // mobile may require a user tap; show controls + message if needed
-                        console.warn('Autoplay blocked:', err);
-                    });
-                }
-
-                setLabel(label);
-                if (isBlob) currentBlobURL = src; // remember only if this src is a blob
-            }
-
-            // Load default on start
-            playSrc(DEFAULT_SRC, `Default: ${DEFAULT_SRC}`, false);
-
-            // File picker -> play selected file
-            input.addEventListener('change', () => {
-                const file = input.files && input.files[0];
-                if (!file) return;
-                const url = URL.createObjectURL(file);
-                playSrc(url, `File: ${file.name}`, true);
-            });
-
-            // Optional "Use default" button
-            if (btn) {
-                btn.addEventListener('click', () => {
-                    input.value = ''; // let user reselect same file later
-                    playSrc(DEFAULT_SRC, `Default: ${DEFAULT_SRC}`, false);
-                });
-            }
-        });
-    </script>
-
 </body>
 </html>

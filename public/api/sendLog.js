@@ -1,5 +1,5 @@
 // sendLog.js
-console.log("***Hello from sendLog.js");
+console.log("***sendLog.js called");
 
 // Utility to send logs to server
 function sendLog(msg) {
@@ -12,13 +12,15 @@ window.sendLog = sendLog;
 
 // Get HTML page name
 const pageName = window.location.pathname.split("/").pop() || "index.html";
-sendLog("+++Loaded from HTML page:" + pageName);
 
 // Get current script name
 if (document.currentScript) {
     const parts = document.currentScript.src.split("/");
-    sendLog("+++Running script:" + parts.pop());
-}
+    sendLog(`page ${pageName}: running script ${parts.pop()}`);
+    }
+else {
+    sendLog(`page ${pageName}: running no script`);
+    };
 
 // Hidden error log container
 const hiddenLog = document.createElement("div");

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title> Member's Page</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            padding-bottom: 50px; /* prevents overlap of footer with content */
+        }
+
+        main {
+            flex: 1;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+
+        aside {
+            width: 220px;
+            background: #222;
+            color: white;
+            padding: 15px;
+            font-size: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+            aside a {
+                color: #9ee37d;
+                text-decoration: none;
+                font-weight: bold;
+                margin: 8px 0; /* vertical space between links */
+                transition: color 0.2s;
+            }
+
+                aside a:hover {
+                    color: #fff;
+                }
+
+        /* Two-column layout: aside + main */
+        .layout {
+            display: flex;
+            min-height: 100vh;
+            flex-direction: row; /* ensures aside is on the left */
+            gap: 20px; /* space between aside and main */
+        }
+
+        .main-content {
+            flex: 1; /* take remaining space */
+            padding: 20px;
+            background: #f5f5f5;
+        }
+
+        /* Right aside (for media) */
+        .media-side {
+            width: 500px;
+            display: flex;
+            flex-direction: column; /* stack elements */
+            /*align-items: center; /* center media vertically */
+            align-items: flex-start; /* left-align content */
+            justify-content: flex-start; /* put content at the TOP */
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+            .media-side img,
+            .media-side video {
+                max-width: 100%;
+                max-height: 100%;
+                border-radius: 8px;
+                object-fit: cover; /* keeps proportions */
+            }
+
+        /* Optional: sticky sidebar */
+        @media (min-height: 0) {
+            aside {
+                position: sticky;
+                top: 0;
+                align-self: flex-start;
+                height: 100vh;
+                overflow: auto;
+            }
+        }
+        /* Media sizing */
+        .media-side img,
+        .media-side video {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <div class="layout">
+        <main>
+            <h1>Member's Page</h1>
+            <h2>Welcome, <span id="usernameDisplay"></span>!</h2>
+
+            <!-- My todo section  -->
+            <section id="todo">
+                <h2>Tests to be done !</h2>
+                <ul>
+                    <li>Web GET &lt;--- Server POST</li>
+                    <li>Web POST ---&gt; Server GET</li>
+                </ul>
+            </section>
+        </main>
+
+        <!-- Video player -->
+        <aside class="media-side">
+            <p><b><strong>My Magic vidéos!</strong></b></p>
+
+            <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+                <input type="file" id="videoInput" accept="video/*" />
+                <button id="useDefaultBtn" type="button">Use default</button>
+                <span id="videoName" style="font-size:14px; opacity:.8;"></span>
+            </div>
+            <!-- Single video element -->
+            <video id="videoPlayer"
+                   controls
+                   autoplay
+                   muted
+                   playsinline
+                   preload="metadata"
+                   style="width:100%; max-width:100%; margin-top:10px; border-radius:8px;">
+                Your browser does not support the video tag.
+            </video>
+        </aside>
+        <!-- Script to send console.log to the server via sendLog.js-->
+        <script src="./api/sendLog.js"></script>
+
+        <!-- Script to get user-->
+        <script>
+            const params = new URLSearchParams(location.search);
+            const user = params.get("user");
+            const msg = `User from URL param: ${user ?? "(none)"}`;
+            sendLog(msg)
+
+            const username = document.getElementById("usernameDisplay");
+            if (username) {
+                username.textContent = " | " + msg;
+            }
+        </script>
+
+        <!-- Script to play video-->
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const DEFAULT_SRC = '/data/Chink-a-chink v7.mp4'; // your default
+            const video = document.getElementById('videoPlayer');
+            const input = document.getElementById('videoInput');
+            const btn = document.getElementById('useDefaultBtn'); // if you added it
+            const name = document.getElementById('videoName');     // if you added it
+
+            let currentBlobURL = null; // track only the active blob url (if any)
+
+            function setLabel(label) { if (name) name.textContent = label || ''; }
+
+            function playSrc(src, label, isBlob = false) {
+                // Revoke the PREVIOUS blob (if any), not the new one
+                if (currentBlobURL) {
+                    URL.revokeObjectURL(currentBlobURL);
+                    currentBlobURL = null;
+                }
+
+                video.src = src;
+                video.load();
+
+                const p = video.play();
+                if (p && typeof p.catch === 'function') {
+                    p.catch(err => {
+                        // mobile may require a user tap; show controls + message if needed
+                        console.warn('Autoplay blocked:', err);
+                    });
+                }
+
+                setLabel(label);
+                if (isBlob) currentBlobURL = src; // remember only if this src is a blob
+            }
+
+            // Load default on start
+            playSrc(DEFAULT_SRC, `Default: ${DEFAULT_SRC}`, false);
+
+            // File picker -> play selected file
+            input.addEventListener('change', () => {
+                const file = input.files && input.files[0];
+                if (!file) return;
+                const url = URL.createObjectURL(file);
+                playSrc(url, `File: ${file.name}`, true);
+            });
+
+            // Optional "Use default" button
+            if (btn) {
+                btn.addEventListener('click', () => {
+                    input.value = ''; // let user reselect same file later
+                    playSrc(DEFAULT_SRC, `Default: ${DEFAULT_SRC}`, false);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

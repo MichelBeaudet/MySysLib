@@ -33,7 +33,6 @@ app.listen(PORT, () => {
 // API: log message from client to server console
 app.get("/log", (req, res) => {
     const msg = req.query.msg || "(vide)";
-    log.ok('/log');
     log.ok("[CLIENT LOG]:" + msg);
     res.sendStatus(200);
 });
@@ -46,10 +45,10 @@ app.get('/admin', function (req, res) {
 
 // Running python script to get next code snippet
 app.get('/run_python', (req, res) => {
-    log.ok('/next');
+    log.ok('/run_python');
     const PYTHON_CMD = process.env.PYTHON_CMD || 'python';
     const scriptPath = path.join(__dirname, './public/api/hacker_terminal_snippet.py');
-
+    log.ok(`Executing Python script: ${scriptPath} with ${PYTHON_CMD}`);
     execFile(PYTHON_CMD, [scriptPath], { windowsHide: true, cwd: __dirname, maxBuffer: 1024 * 1024 },
         (err, stdout, stderr) => {
             if (err) {
@@ -70,6 +69,10 @@ app.get('/run_python', (req, res) => {
             }
         }
     );
+    log.ok('Python script execution initiated');
+    log.ok("Status:" + res.json);
+    log.ok(`Payload: ${ res.json }`);
+
 });
 
 //RUN EXE
@@ -106,7 +109,7 @@ app.post('/run_exe', (req, res) => {
 
 // API: system params each call
 app.get('/api/collect_system_props', (req, res) => {
-    log.ok('*** GET /api/collect_system_props');
+    log.ok('/api/collect_system_props');
     const { collect_system_props } = require('./public/api/collect_system_props');
     try {
         const data = collect_system_props();

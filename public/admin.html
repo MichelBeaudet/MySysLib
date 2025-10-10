@@ -13,7 +13,7 @@
         <input id="username" type="text" value="MikeBeaudet" />
     </label>
     <button id="test_btn">Test me</button>
-    
+
     <!-- Script to send console.log to the server via sendLog.js-->
     <script src="./api/sendLog.js"></script>
 
@@ -24,7 +24,7 @@
         const username = document.getElementById("username");
         const status = document.getElementById("status");
         const test_btn = document.getElementById("test_btn");
-        sendlog(`Admin page loaded for user: " + ${username.value}`);
+        sendLog(`Admin page loaded for user: " + ${username.value}`);
 
         test_btn.onclick = function () {
             if (username.value === "MikeBeaudet") {
@@ -35,7 +35,20 @@
                 status.style.color = "red";
             }
         };
-        sendlog(`Admin page unloaded for user: " + ${username.value}`);
+        sendLog(`Admin page unloaded for user: " + ${username.value}`);
+    </script>
+
+    <h2>Send an Email</h2>
+    <button onclick="sendEmail()">Send Email</button>
+    <script>
+        function sendEmail() {
+            const subject = encodeURIComponent("Hello from my site");
+            const body = encodeURIComponent("This is a test message.");
+            const recipient = "example@email.com";
+
+            // Opens the default email client with prefilled fields
+            window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
+        }
     </script>
 
 </body>
