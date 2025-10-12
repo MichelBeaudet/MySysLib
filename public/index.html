@@ -24,31 +24,42 @@
             background: #f5f5f5;
         }
 
+
+
         nav {
-            background: #111;
-            padding: 10px 16px;
-            display: flex;
-            gap: 0;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-            font-size: 30px;
+            background-color: #003366;
+            text-align: center;
+            padding: 10px 0;
         }
 
-            nav a {
-                color: white;
-                text-decoration: none;
-                font-weight: bold;
-                padding: 0 12px; /* space around each link */
-                line-height: 1; /* keeps border tidy */
+            /* ---- LINKS ---- */
+            nav .nav-links {
+                display: inline-flex;
+                align-items: center;
+                gap: 12px; /* optional: consistent spacing */
             }
 
-                nav a + a { /* every link after the first */
-                    border-left: 10px solid white; /* the vertical bar */
+            nav a {
+                color: mediumspringgreen;
+                text-decoration: none;
+                padding: 0 12px; /* space around each link */
+                line-height: 1.5; /* tidy alignment */
+            }
+
+          /* Add vertical divider only between links (not before first) */
+            nav a + a {
+                    border-left: 4px solid grey;
+                    padding-left: 12px; /* spacing after divider */
                 }
 
-                nav a:hover {
-                    color: blue;
+            /* ----  TITLE ---- */
+            nav h2 {
+                color: white;
+                margin-top: 8px;
+                font-size: 1.4em;
+            }
+            nav a:hover {
+                    color: black;
                 }
 
         section {
@@ -75,9 +86,9 @@
             display: flex;
             border: 5px solid #ccc;
             position: absolute;
-            top: 10px; /* distance from top */
-            left: 20px; /* distance from left */
-            width: 120px;
+            top: 0px; /* distance from top */
+            left: 0px; /* distance from left */
+            width: 100px;
             height: auto;
         }
 
@@ -119,24 +130,31 @@
                 color: red;
             }
     </style>
-
 </head>
 <body>
     <img class="logo" src="Beaudet Services Conseils.png" alt="Description" />
     <!-- My top nav section  -->
-    <nav>
-        <a href="about.html">About</a>
-        <a href="members_login_page.html">Member's Page</a>
-        <a href="Beaudet_SC_webpage.html">Page Web de Beaudet Services Conseils</a>
+
+    <nav> 
+        <!-- Links -->
+        <div class="nav-links">
+            <a href="Beaudet_SC_webpage.html" style="color: white; text-decoration: none;">Beaudet Services Conseils</a>
+            <a href="members_login_page.html" style="color: white; text-decoration: none;">Member's Page</a>
+            <a href="about.html" style="color: white; text-decoration: none;">About</a>
+        </div>
+
+        <!-- Stacked below -->
+        <h2>Mike Beaudet</h2>
     </nav>
 
-    <h1 style="text-align: center;">Main Web Page of Mike v2.2</h1>
+
+
+
 
 
     <div class="div_layout">
         <!-- My main   -->
         <main>
-
             <!-- My left_sidebar section  -->
             <section class="left_sidebar_goodies">
                 <p><b><u>Goodies</u></b></p>
@@ -150,7 +168,6 @@
                 <a href="login_page.html">login</a><br />
                 <a href="request_page.html">request_page</a><br />
             </section>
-
         </main>
 
         <!-- My todo section  -->
@@ -184,7 +201,7 @@
             <br /><br />
             <strong>System Properties with history back</strong>
             <button onclick="location.href='system_props.html'">System Properties</button>
-            
+
             <br /><br />
             <strong>System Properties with no history back</strong>
             <button onclick="window.open('system_props.html','_blank')">System Properties</button>

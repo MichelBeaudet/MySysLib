@@ -44,8 +44,40 @@ app.get('/admin', function (req, res) {
 });
 
 // Running python script to get next code snippet
-app.get('/run_python', (req, res) => {
+app.post('/run_python', (req, res) => {
     log.ok('/run_python');
+    const PYTHON_CMD = process.env.PYTHON_CMD || 'python';
+    const scriptPath = path.join(__dirname, './public/api/test1.py');
+    log.ok(`Executing Python script: ${scriptPath} with ${PYTHON_CMD}`);
+    execFile(PYTHON_CMD, [scriptPath], { windowsHide: true, cwd: __dirname, maxBuffer: 1024 * 1024 },
+        (err, stdout, stderr) => {
+            if (err) {
+                console.error('Python error:', err, stderr);
+                return res.status(500).json({ error: 'python_exec_failed', detail: String(err) });
+            }
+            try {
+                // Le script Python imprime déjà un JSON { "code": "..." }
+                const payload = JSON.parse(stdout.trim());
+                // Sécurité minimale: force la présence de "code"
+                if (typeof payload !== 'object' || typeof payload.code !== 'string') {
+                    throw new Error('Invalid JSON from Python');
+                }
+                res.json(payload);
+            } catch (parseErr) {
+                console.error('JSON parse error:', parseErr, 'stdout=', stdout);
+                res.status(500).json({ error: 'invalid_json_from_python' });
+            }
+        }
+    );
+    log.ok('Python script execution initiated');
+    //log.ok("Status:" + res.json);
+    //log.ok(`Payload: ${ res.json }`);
+
+});
+
+// Running python script test1.py
+app.post('/run_python_hacker_snippet', (req, res) => {
+    log.ok('/run_python_hacker_snippet');
     const PYTHON_CMD = process.env.PYTHON_CMD || 'python';
     const scriptPath = path.join(__dirname, './public/api/hacker_terminal_snippet.py');
     log.ok(`Executing Python script: ${scriptPath} with ${PYTHON_CMD}`);
@@ -70,8 +102,8 @@ app.get('/run_python', (req, res) => {
         }
     );
     log.ok('Python script execution initiated');
-    log.ok("Status:" + res.json);
-    log.ok(`Payload: ${ res.json }`);
+    //log.ok("Status:" + res.json);
+    //log.ok(`Payload: ${ res.json }`);
 
 });
 

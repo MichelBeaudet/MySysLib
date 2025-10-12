@@ -104,6 +104,9 @@
         </div>
     </div>
 
+    <!-- Script to send console.log to the server via sendLog.js-->
+    <script src="./api/sendLog.js"></script>
+
     <script>
         (() => {
             const out = document.getElementById("out");
@@ -125,8 +128,9 @@
             }
 
             async function fetchSnippet() {
+                sendLog("Fetching Python snippet /run_python_hacker_snippet");
                 try {
-                    const resp = await fetch("/run_python", { cache: "no-store" });
+                    const resp = await fetch("../run_python_hacker_snippet", { cache: "no-store" });
                     if (!resp.ok) throw new Error("HTTP " + resp.status);
                     const { code } = await resp.json();
                     out.insertAdjacentHTML("beforeend", colorizeBlock(code) + "\\n");
@@ -138,6 +142,7 @@
                     statusEl.textContent = "Statut: erreur";
                     console.error(err);
                 }
+                sendLog("Fetch complete");
             }
 
             function startLoop() {
