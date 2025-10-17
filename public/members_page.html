@@ -5,97 +5,7 @@
     <meta charset="utf-8" />
     <title> Member's Page</title>
 
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f5f5f5;
-            padding-bottom: 50px; /* prevents overlap of footer with content */
-        }
-
-        main {
-            flex: 1;
-            padding: 20px;
-            background: #f5f5f5;
-        }
-
-        aside {
-            width: 220px;
-            background: #222;
-            color: white;
-            padding: 15px;
-            font-size: 15px;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-
-            aside a {
-                color: #9ee37d;
-                text-decoration: none;
-                font-weight: bold;
-                margin: 8px 0; /* vertical space between links */
-                transition: color 0.2s;
-            }
-
-                aside a:hover {
-                    color: #fff;
-                }
-
-        /* Two-column layout: aside + main */
-        .layout {
-            display: flex;
-            min-height: 100vh;
-            flex-direction: row; /* ensures aside is on the left */
-            gap: 20px; /* space between aside and main */
-        }
-
-        .main-content {
-            flex: 1; /* take remaining space */
-            padding: 20px;
-            background: #f5f5f5;
-        }
-
-        /* Right aside (for media) */
-        .media-side {
-            width: 500px;
-            display: flex;
-            flex-direction: column; /* stack elements */
-            /*align-items: center; /* center media vertically */
-            align-items: flex-start; /* left-align content */
-            justify-content: flex-start; /* put content at the TOP */
-            padding: 10px;
-            border-radius: 8px;
-        }
-
-            .media-side img,
-            .media-side video {
-                max-width: 100%;
-                max-height: 100%;
-                border-radius: 8px;
-                object-fit: cover; /* keeps proportions */
-            }
-
-        /* Optional: sticky sidebar */
-        @media (min-height: 0) {
-            aside {
-                position: sticky;
-                top: 0;
-                align-self: flex-start;
-                height: 100vh;
-                overflow: auto;
-            }
-        }
-        /* Media sizing */
-        .media-side img,
-        .media-side video {
-            max-width: 100%;
-            max-height: 100%;
-            border-radius: 8px;
-            object-fit: cover;
-        }
-    </style>
-</head>
+<link rel="stylesheet" href="/Stylesheet.css"></head>
 <body>
     <div class="layout">
         <main>
@@ -150,6 +60,10 @@
 
         <!-- Script to play video-->
     </div>
+
+
+    <!-- Script to send console.log to the server via sendLog.js-->
+    <script src="./api/sendLog.js"></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
