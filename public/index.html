@@ -4,132 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Main Web Page of Mike</title>
-    
+
     <!-- Style sheet properties-->
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f5f5f5;
-            padding-bottom: 50px; /* prevents overlap of footer with content */
-        }
-
-        main {
-            flex: 1;
-            padding: 20px;
-            background: #f5f5f5;
-        }
-
-
-
-        nav {
-            background-color: #003366;
-            text-align: center;
-            padding: 10px 0;
-        }
-
-            /* ---- LINKS ---- */
-            nav .nav-links {
-                display: inline-flex;
-                align-items: center;
-                gap: 12px; /* optional: consistent spacing */
-            }
-
-            nav a {
-                color: mediumspringgreen;
-                text-decoration: none;
-                padding: 0 12px; /* space around each link */
-                line-height: 1.5; /* tidy alignment */
-            }
-
-          /* Add vertical divider only between links (not before first) */
-            nav a + a {
-                    border-left: 4px solid grey;
-                    padding-left: 12px; /* spacing after divider */
-                }
-
-            /* ----  TITLE ---- */
-            nav h2 {
-                color: white;
-                margin-top: 8px;
-                font-size: 1.4em;
-            }
-            nav a:hover {
-                    color: black;
-                }
-
-        section {
-            border: 2px solid #333; /* thickness, style, color */
-            padding: 15px; /* space inside the border */
-            margin: 20px; /* space outside the border */
-            border-radius: 8px; /* optional: rounded corners */
-            background: #fafafa; /* optional: light background */
-            height: auto;
-        }
-
-        p {
-            font-size: 25px;
-        }
-
-        /* 3-column layout: left_sidebar_goodies + main + right_sidebar_properties*/
-        .div_layout {
-            display: flex;
-            min-height: 100vh;
-            flex-direction: row; /* ensures is on the left */
-        }
-
-        .logo {
-            display: flex;
-            border: 5px solid #ccc;
-            position: absolute;
-            top: 0px; /* distance from top */
-            left: 0px; /* distance from left */
-            width: 100px;
-            height: auto;
-        }
-
-        .left_sidebar_goodies {
-            margin-top: 10px;
-            left: 20px ;
-            width: 220px;
-            padding: 15px;
-            font-size: 15px;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-
-            .left_sidebar_goodies a:hover {
-                color: forestgreen;
-            }
-
-        .right_sidebar_properties {
-            margin-top: 10px;
-            width: 220px;
-            background: #222;
-            color: white;
-            padding: 15px;
-            font-size: 15px;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-
-        right_sidebar_properties a {
-            color: #9ee37d;
-            text-decoration: none;
-            font-weight: bold;
-            margin: 8px 0; /* vertical space between links */
-            transition: color 0.2s;
-        }
-            right_sidebar_properties a:hover {
-                color: red;
-            }
-    </style>
+    <link rel="stylesheet" href="style_sheet.css" />
 </head>
 <body>
     <img class="logo" src="Beaudet Services Conseils.png" alt="Description" />
@@ -144,13 +21,8 @@
         </div>
 
         <!-- Stacked below -->
-        <h2>Mike Beaudet</h2>
+        <h2>Mike Beaudet 17 octobre</h2>
     </nav>
-
-
-
-
-
 
     <div class="div_layout">
         <!-- My main   -->
@@ -192,7 +64,7 @@
         </section>
 
         <!-- My right_sidebar section  -->
-        <section class="right_sidebar_properties">
+        <aside class="right_sidebar_properties">
             <p><b><u>Properties</u></b></p>
 
             <strong>Navigator Properties</strong>
@@ -221,7 +93,7 @@
             <br /><br />
             <strong>DOM Properties</strong>
             <button onclick="window.open('DOM_props.html','_blank')">DOM Properties</button>
-        </section>
+        </aside>
 
     </div>
 

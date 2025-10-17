@@ -151,9 +151,26 @@ app.get('/api/collect_system_props', (req, res) => {
         res.status(500).json({ error: 'Failed to collect system parameters' });
     }
 });
-module.exports = app;
 
-// (Optional) GET alias if you insist on GET (not recommended for side-effects)
+// API: teapot  
+app.get('/teapot', (req, res) => {
+    log.ok('/teapot');
+    res.writeHead(418, { 'Content-Type': 'text/html' });
+    res.end(`
+            <html>
+              <head><title>418 I'm a Teapot</title></head>
+              <body style="font-family: sans-serif; text-align:center; margin-top: 50px;">
+                <h1>☕ 418 I'm a Teapot</h1>
+                <p>The server refuses to brew coffee because it is, permanently, a teapot.</p>
+                <p>RFC 2324 – Hyper Text Coffee Pot Control Protocol (HTCPCP/1.0)</p>
+              </body>
+            </html>
+        `);
+});
+
+
+
+
 function clearConsole() {
     // ANSI clear + home cursor
     console.log('[server] Trying to clear console');
@@ -169,3 +186,5 @@ app.get('/admin/console/clear', (req, res) => {
 });
 
 log.ok(`${path.basename(__filename)} terminated`);
+
+module.exports = app;
